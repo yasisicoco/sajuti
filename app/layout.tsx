@@ -12,14 +12,29 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const appUrl =
+const rawAppUrl =
   typeof process.env.NEXT_PUBLIC_APP_URL === "string" &&
   process.env.NEXT_PUBLIC_APP_URL.length > 0
-    ? process.env.NEXT_PUBLIC_APP_URL.replace(/\/$/, "")
-    : null;
+    ? process.env.NEXT_PUBLIC_APP_URL.replace(/\/$/, "").trim()
+    : "";
+
+const appUrl = rawAppUrl || null;
+
+function getMetadataBase(): URL | undefined {
+  if (!appUrl) return undefined;
+  try {
+    const url =
+      appUrl.startsWith("http://") || appUrl.startsWith("https://")
+        ? appUrl
+        : `https://${appUrl}`;
+    return new URL(url);
+  } catch {
+    return undefined;
+  }
+}
 
 export const metadata: Metadata = {
-  metadataBase: appUrl ? new URL(appUrl) : undefined,
+  metadataBase: getMetadataBase(),
   title: "MBTI × 사주 궁합",
   description:
     "모임을 만들고 친구를 불러서 MBTI·사주 궁합을 한눈에 보세요. 엔터테인먼트 참고용.",
