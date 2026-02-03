@@ -67,11 +67,10 @@ export async function POST(
     );
   }
 
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || request.nextUrl.origin;
-  const roomUrl = `${baseUrl}/room/${roomId}?me=${participant.id}`;
+  const roomPath = `/room/${roomId}?me=${participant.id}`;
 
   return NextResponse.json({
     participantId: participant.id,
-    roomUrl,
+    roomPath,
   });
 }

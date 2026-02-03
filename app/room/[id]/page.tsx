@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useParams, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -16,30 +16,42 @@ export default function RoomPage() {
   const [room, setRoom] = useState<RoomResponse | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const retryRef = { current: false };
 
-  useEffect(() => {
-    let cancelled = false;
-    async function fetchRoom() {
+  const fetchRoom = useCallback(
+    async (isRetry = false) => {
+      setLoading(true);
+      setError(null);
       try {
         const res = await fetch(`/api/rooms/${id}`);
         if (!res.ok) {
-          if (res.status === 404) setError("방을 찾을 수 없어요.");
-          else setError("불러오기 실패.");
+          if (res.status === 404) {
+            setError("방을 찾을 수 없어요.");
+            if (!isRetry && !retryRef.current) {
+              retryRef.current = true;
+              setTimeout(() => fetchRoom(true), 2500);
+            }
+          } else setError("불러오기 실패.");
           return;
         }
         const data: RoomResponse = await res.json();
-        if (!cancelled) setRoom(data);
+        setRoom(data);
       } catch {
-        if (!cancelled) setError("네트워크 오류.");
+        setError("네트워크 오류.");
+        if (!isRetry && !retryRef.current) {
+          retryRef.current = true;
+          setTimeout(() => fetchRoom(true), 2500);
+        }
       } finally {
-        if (!cancelled) setLoading(false);
+        setLoading(false);
       }
-    }
-    fetchRoom();
-    return () => {
-      cancelled = true;
-    };
-  }, [id]);
+    },
+    [id],
+  );
+
+  useEffect(() => {
+    fetchRoom(false);
+  }, [fetchRoom]);
 
   if (loading) {
     return (
@@ -64,12 +76,25 @@ export default function RoomPage() {
         >
           {error ?? "방 정보를 불러올 수 없어요."}
         </p>
-        <Link
-          href="/"
-          className="rounded-xl bg-violet-500 px-6 py-3 font-semibold text-white transition hover:bg-violet-600 focus:outline-none focus:ring-2 focus:ring-violet-500"
-        >
-          홈으로
-        </Link>
+        <p className="text-center text-xs text-slate-500 dark:text-slate-500">
+          방이 막 만들어졌다면 잠시 후 다시 시도해 주세요.
+        </p>
+        <div className="flex flex-wrap items-center justify-center gap-3">
+          <button
+            type="button"
+            onClick={() => fetchRoom(true)}
+            disabled={loading}
+            className="rounded-xl border-2 border-violet-500 bg-white px-6 py-3 font-semibold text-violet-600 transition hover:bg-violet-50 disabled:opacity-50 dark:border-violet-400 dark:bg-slate-900 dark:text-violet-400 dark:hover:bg-violet-950/50"
+          >
+            {loading ? "다시 불러오는 중…" : "다시 시도"}
+          </button>
+          <Link
+            href="/"
+            className="rounded-xl bg-violet-500 px-6 py-3 font-semibold text-white transition hover:bg-violet-600 focus:outline-none focus:ring-2 focus:ring-violet-500"
+          >
+            홈으로
+          </Link>
+        </div>
       </main>
     );
   }

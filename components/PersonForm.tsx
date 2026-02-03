@@ -80,9 +80,9 @@ export default function PersonForm({
         </div>
         <div>
           <label className="mb-1 block text-sm font-medium text-slate-600 dark:text-slate-400">
-            생년월일·시 (양력)
+            생년월일 (양력)
           </label>
-          <div className="grid grid-cols-4 gap-2">
+          <div className="grid grid-cols-3 gap-2">
             <input
               type="number"
               {...register("birthYear", { valueAsNumber: true })}
@@ -110,25 +110,12 @@ export default function PersonForm({
               className="rounded-xl border border-slate-300 bg-white px-3 py-3 text-center text-slate-800 transition-[border-color,box-shadow] hover:border-slate-400 focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-500/20 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-200 dark:hover:border-slate-500"
               aria-label="출생 일"
             />
-            <input
-              type="number"
-              {...register("birthHour", { valueAsNumber: true })}
-              min={0}
-              max={23}
-              placeholder="시"
-              className="rounded-xl border border-slate-300 bg-white px-3 py-3 text-center text-slate-800 transition-[border-color,box-shadow] hover:border-slate-400 focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-500/20 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-200 dark:hover:border-slate-500"
-              aria-label="출생 시"
-            />
           </div>
-          {(errors.birthYear ||
-            errors.birthMonth ||
-            errors.birthDay ||
-            errors.birthHour) && (
+          {(errors.birthYear || errors.birthMonth || errors.birthDay) && (
             <p className="mt-1 text-xs text-red-500">
               {errors.birthYear?.message ||
                 errors.birthMonth?.message ||
-                errors.birthDay?.message ||
-                errors.birthHour?.message}
+                errors.birthDay?.message}
             </p>
           )}
         </div>

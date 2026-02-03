@@ -179,23 +179,6 @@ function PersonFields({
             )}
           </div>
         </div>
-        <div>
-          <label className="mb-1 block text-sm text-slate-600 dark:text-slate-400">
-            태어난 시 (0~23)
-          </label>
-          <input
-            type="number"
-            {...register(`${prefix}.birthHour`, { valueAsNumber: true })}
-            min={0}
-            max={23}
-            className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-slate-800 transition-[border-color,box-shadow] hover:border-slate-400 focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-500/20 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-200 dark:hover:border-slate-500"
-          />
-          {err?.birthHour && (
-            <p className="mt-0.5 text-xs text-red-500">
-              {err.birthHour.message}
-            </p>
-          )}
-        </div>
       </div>
     </div>
   );

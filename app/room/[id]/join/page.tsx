@@ -27,8 +27,9 @@ export default function JoinRoomPage() {
       if (!res.ok) {
         throw new Error(data.error || "참여하기 실패");
       }
-      const { roomUrl } = data;
-      router.push(roomUrl);
+      const roomPath =
+        data.roomPath ?? `/room/${roomId}?me=${data.participantId ?? ""}`;
+      router.push(roomPath);
     } catch (e) {
       setError((e as Error).message);
     } finally {
