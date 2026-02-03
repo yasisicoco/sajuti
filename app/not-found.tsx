@@ -13,7 +13,7 @@ export default function NotFound() {
         href="/"
         className="rounded-xl bg-amber-500 px-6 py-3 font-semibold text-white transition hover:bg-amber-600 focus:outline-none focus:ring-2 focus:ring-amber-500"
       >
-        홈으로 가기
+        홈으로
       </Link>
     </main>
   );
