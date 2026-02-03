@@ -15,10 +15,11 @@ const geistMono = Geist_Mono({
 const appUrl =
   typeof process.env.NEXT_PUBLIC_APP_URL === "string" &&
   process.env.NEXT_PUBLIC_APP_URL.length > 0
-    ? process.env.NEXT_PUBLIC_APP_URL
+    ? process.env.NEXT_PUBLIC_APP_URL.replace(/\/$/, "")
     : null;
 
 export const metadata: Metadata = {
+  metadataBase: appUrl ? new URL(appUrl) : undefined,
   title: "MBTI × 사주 궁합",
   description:
     "모임을 만들고 친구를 불러서 MBTI·사주 궁합을 한눈에 보세요. 엔터테인먼트 참고용.",
@@ -28,25 +29,23 @@ export const metadata: Metadata = {
       "모임을 만들고 친구를 초대하면 MBTI 궁합과 사주 궁합을 한눈에 볼 수 있어요. 참여한 사람끼리 궁합 등급과 상세 해석까지!",
     type: "website",
     locale: "ko_KR",
-    ...(appUrl && {
-      url: appUrl,
-      siteName: "MBTI × 사주 궁합",
-      images: [
-        {
-          url: `${appUrl}/og.jpg`,
-          width: 1200,
-          height: 630,
-          alt: "MBTI × 사주 궁합",
-        },
-      ],
-    }),
+    url: appUrl ?? undefined,
+    siteName: "MBTI × 사주 궁합",
+    images: [
+      {
+        url: "/og.jpg",
+        width: 1200,
+        height: 630,
+        alt: "MBTI × 사주 궁합",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "MBTI × 사주 궁합 — 우리 궁합 한번 볼래?",
     description:
       "모임을 만들고 친구를 초대하면 MBTI·사주 궁합을 한눈에 볼 수 있어요.",
-    ...(appUrl && { images: [`${appUrl}/og.jpg`] }),
+    images: ["/og.jpg"],
   },
 };
 
