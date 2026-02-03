@@ -76,3 +76,5 @@ create policy "Anyone can read compatibility_cache"
   on public.compatibility_cache for select using (true);
 create policy "Anyone can insert compatibility_cache"
   on public.compatibility_cache for insert with check (true);
+create policy "Anyone can update compatibility_cache"
+  on public.compatibility_cache for update using (true) with check (true);

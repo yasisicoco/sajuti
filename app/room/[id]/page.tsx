@@ -43,9 +43,9 @@ export default function RoomPage() {
 
   if (loading) {
     return (
-      <main className="flex min-h-screen items-center justify-center bg-stone-50 dark:bg-stone-950">
+      <main className="flex min-h-screen items-center justify-center bg-slate-50 dark:bg-slate-950">
         <motion.p
-          className="text-stone-500 dark:text-stone-400"
+          className="text-slate-500 dark:text-slate-400"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
         >
@@ -57,16 +57,16 @@ export default function RoomPage() {
 
   if (error || !room) {
     return (
-      <main className="flex min-h-screen flex-col items-center justify-center gap-4 px-4 bg-stone-50 dark:bg-stone-950">
+      <main className="flex min-h-screen flex-col items-center justify-center gap-4 px-4 bg-slate-50 dark:bg-slate-950">
         <p
-          className="text-center text-stone-600 dark:text-stone-400"
+          className="text-center text-slate-600 dark:text-slate-400"
           role="alert"
         >
           {error ?? "방 정보를 불러올 수 없어요."}
         </p>
         <Link
           href="/"
-          className="rounded-xl bg-amber-500 px-6 py-3 font-semibold text-white transition hover:bg-amber-600 focus:outline-none focus:ring-2 focus:ring-amber-500"
+          className="rounded-xl bg-violet-500 px-6 py-3 font-semibold text-white transition hover:bg-violet-600 focus:outline-none focus:ring-2 focus:ring-violet-500"
         >
           홈으로
         </Link>
@@ -75,11 +75,11 @@ export default function RoomPage() {
   }
 
   return (
-    <main className="min-h-screen bg-stone-50 dark:bg-stone-950">
+    <main className="min-h-screen bg-slate-50 dark:bg-slate-950">
       <div className="mx-auto max-w-lg px-5 pt-6 pb-10 sm:px-4 sm:pb-8">
         <Link
           href="/"
-          className="mb-4 inline-flex min-h-[44px] items-center gap-1 text-sm font-medium text-stone-600 hover:text-stone-900 dark:text-stone-400 dark:hover:text-stone-100 sm:min-h-0"
+          className="mb-4 inline-flex min-h-[44px] items-center gap-1 text-sm font-medium text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100 sm:min-h-0"
           aria-label="홈으로 돌아가기"
         >
           ← 홈

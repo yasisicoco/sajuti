@@ -37,20 +37,20 @@ export default function JoinRoomPage() {
   };
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-amber-50/40 to-stone-100 dark:from-stone-950 dark:to-stone-900">
+    <main className="min-h-screen bg-gradient-to-b from-violet-50/60 to-slate-100 dark:from-slate-950 dark:to-slate-900">
       <div className="mx-auto flex min-h-screen max-w-lg flex-col px-4 py-8">
         <Link
           href={`/room/${roomId}`}
-          className="mb-6 inline-flex items-center gap-1 text-sm font-medium text-stone-600 hover:text-stone-900 dark:text-stone-400 dark:hover:text-stone-100"
+          className="mb-6 inline-flex items-center gap-1 text-sm font-medium text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100"
           aria-label="방으로 돌아가기"
         >
           ← 방으로
         </Link>
         <div className="flex flex-1 flex-col items-center">
-          <h1 className="mb-2 text-xl font-bold text-stone-900 dark:text-stone-100">
+          <h1 className="mb-2 text-xl font-bold text-slate-900 dark:text-slate-100">
             나도 참여하기
           </h1>
-          <p className="mb-6 text-sm text-stone-600 dark:text-stone-400">
+          <p className="mb-6 text-sm text-slate-600 dark:text-slate-400">
             내 정보를 입력하면 이 방의 궁합에 참여할 수 있어요.
           </p>
           <PersonForm

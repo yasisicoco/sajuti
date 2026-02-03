@@ -23,7 +23,7 @@ export default async function SharedResultPage({
 
   if (!url || !key) {
     return (
-      <div className="mx-auto max-w-xl px-4 py-16 text-center text-stone-600 dark:text-stone-400">
+      <div className="mx-auto max-w-xl px-4 py-16 text-center text-slate-600 dark:text-slate-400">
         공유 결과를 보려면 Supabase 환경 변수를 설정해 주세요.
       </div>
     );
@@ -53,19 +53,19 @@ export default async function SharedResultPage({
   };
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-amber-50/30 to-stone-100 dark:from-stone-950 dark:to-stone-900">
+    <main className="min-h-screen bg-gradient-to-b from-violet-50/60 to-slate-100 dark:from-slate-950 dark:to-slate-900">
       <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6 sm:py-14">
         <header className="mb-10 text-center">
-          <h1 className="text-3xl font-bold tracking-tight text-stone-900 dark:text-stone-100 sm:text-4xl">
+          <h1 className="text-3xl font-bold tracking-tight text-slate-800 dark:text-slate-100 sm:text-4xl">
             MBTI × 사주 궁합
           </h1>
-          <p className="mt-2 text-stone-600 dark:text-stone-400">
+          <p className="mt-2 text-slate-600 dark:text-slate-400">
             공유된 궁합 결과입니다.
           </p>
         </header>
         <a
           href="/"
-          className="mb-6 inline-block text-sm font-medium text-amber-700 underline dark:text-amber-400"
+          className="mb-6 inline-block text-sm font-medium text-violet-700 underline dark:text-violet-400"
         >
           ← 나도 궁합 보기
         </a>

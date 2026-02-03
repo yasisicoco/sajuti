@@ -71,7 +71,7 @@ export default function InputForm({ onSubmit }: Props) {
       </div>
       <motion.button
         type="submit"
-        className="rounded-xl bg-amber-600 px-6 py-4 text-lg font-semibold text-white shadow-lg transition hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2"
+        className="rounded-xl bg-violet-600 px-6 py-4 text-lg font-semibold text-white shadow-md transition-[box-shadow,background-color] hover:bg-violet-700 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2"
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
       >
@@ -100,28 +100,29 @@ function PersonFields({
   const err = errors[p];
 
   return (
-    <div className="rounded-2xl border border-stone-200 bg-stone-50/50 p-6 dark:border-stone-700 dark:bg-stone-900/50">
-      <h3 className="mb-4 text-lg font-semibold text-stone-800 dark:text-stone-200">
+    <div className="rounded-2xl border border-slate-200 bg-slate-50/50 p-6 dark:border-slate-700 dark:bg-slate-900/50">
+      <h3 className="mb-4 text-lg font-semibold text-slate-800 dark:text-slate-200">
         {label}
       </h3>
       <div className="space-y-4">
         <div>
-          <label className="mb-1 block text-sm text-stone-600 dark:text-stone-400">
+          <label className="mb-1 block text-sm text-slate-600 dark:text-slate-400">
             이름 (선택, 표시용)
           </label>
           <input
             {...register(`${prefix}.name`)}
-            className="w-full rounded-lg border border-stone-300 bg-white px-3 py-2 text-stone-800 dark:border-stone-600 dark:bg-stone-800 dark:text-stone-200"
+            className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-slate-800 transition-[border-color,box-shadow] hover:border-slate-400 focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-500/20 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-200 dark:hover:border-slate-500"
             placeholder="이름"
           />
         </div>
         <div>
-          <label className="mb-1 block text-sm font-medium text-stone-700 dark:text-stone-300">
+          <label className="mb-1 block text-sm font-medium text-slate-700 dark:text-slate-300">
             MBTI
           </label>
           <select
             {...register(`${prefix}.mbti`)}
-            className="w-full rounded-lg border border-stone-300 bg-white px-3 py-2 text-stone-800 dark:border-stone-600 dark:bg-stone-800 dark:text-stone-200"
+            className="w-full rounded-lg border border-slate-300 bg-white py-2 pl-3 pr-10 text-slate-800 transition-[border-color,box-shadow] hover:border-slate-400 focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-500/20 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-200 dark:hover:border-slate-500"
+            aria-label="MBTI 선택"
           >
             {MBTI_TYPES.map((t) => (
               <option key={t} value={t}>
@@ -132,7 +133,7 @@ function PersonFields({
         </div>
         <div className="grid grid-cols-3 gap-2">
           <div>
-            <label className="mb-1 block text-sm text-stone-600 dark:text-stone-400">
+            <label className="mb-1 block text-sm text-slate-600 dark:text-slate-400">
               년
             </label>
             <input
@@ -140,7 +141,7 @@ function PersonFields({
               {...register(`${prefix}.birthYear`, { valueAsNumber: true })}
               min={1900}
               max={2100}
-              className="w-full rounded-lg border border-stone-300 bg-white px-2 py-2 text-stone-800 dark:border-stone-600 dark:bg-stone-800 dark:text-stone-200"
+              className="w-full rounded-lg border border-slate-300 bg-white px-2 py-2 text-slate-800 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-200"
             />
             {err?.birthYear && (
               <p className="mt-0.5 text-xs text-red-500">
@@ -149,7 +150,7 @@ function PersonFields({
             )}
           </div>
           <div>
-            <label className="mb-1 block text-sm text-stone-600 dark:text-stone-400">
+            <label className="mb-1 block text-sm text-slate-600 dark:text-slate-400">
               월
             </label>
             <input
@@ -157,11 +158,11 @@ function PersonFields({
               {...register(`${prefix}.birthMonth`, { valueAsNumber: true })}
               min={1}
               max={12}
-              className="w-full rounded-lg border border-stone-300 bg-white px-2 py-2 text-stone-800 dark:border-stone-600 dark:bg-stone-800 dark:text-stone-200"
+              className="w-full rounded-lg border border-slate-300 bg-white px-2 py-2 text-slate-800 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-200"
             />
           </div>
           <div>
-            <label className="mb-1 block text-sm text-stone-600 dark:text-stone-400">
+            <label className="mb-1 block text-sm text-slate-600 dark:text-slate-400">
               일
             </label>
             <input
@@ -169,7 +170,7 @@ function PersonFields({
               {...register(`${prefix}.birthDay`, { valueAsNumber: true })}
               min={1}
               max={maxDay}
-              className="w-full rounded-lg border border-stone-300 bg-white px-2 py-2 text-stone-800 dark:border-stone-600 dark:bg-stone-800 dark:text-stone-200"
+              className="w-full rounded-lg border border-slate-300 bg-white px-2 py-2 text-slate-800 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-200"
             />
             {err?.birthDay && (
               <p className="mt-0.5 text-xs text-red-500">
@@ -179,7 +180,7 @@ function PersonFields({
           </div>
         </div>
         <div>
-          <label className="mb-1 block text-sm text-stone-600 dark:text-stone-400">
+          <label className="mb-1 block text-sm text-slate-600 dark:text-slate-400">
             태어난 시 (0~23)
           </label>
           <input
@@ -187,7 +188,7 @@ function PersonFields({
             {...register(`${prefix}.birthHour`, { valueAsNumber: true })}
             min={0}
             max={23}
-            className="w-full rounded-lg border border-stone-300 bg-white px-3 py-2 text-stone-800 dark:border-stone-600 dark:bg-stone-800 dark:text-stone-200"
+            className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-slate-800 transition-[border-color,box-shadow] hover:border-slate-400 focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-500/20 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-200 dark:hover:border-slate-500"
           />
           {err?.birthHour && (
             <p className="mt-0.5 text-xs text-red-500">

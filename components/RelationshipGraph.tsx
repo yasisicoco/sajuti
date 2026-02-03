@@ -118,18 +118,18 @@ export default function RelationshipGraph({
     return (
       <div className="flex justify-center py-6">
         <motion.div
-          className="flex flex-col items-center rounded-2xl border-2 border-amber-400 bg-amber-50 px-6 py-5 dark:border-amber-600 dark:bg-amber-950/50"
+          className="flex flex-col items-center rounded-2xl border-2 border-violet-300 bg-violet-50/90 px-6 py-5 shadow-sm dark:border-violet-600 dark:bg-violet-950/50"
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
         >
           <span className="text-3xl" aria-hidden>
             {getJiEmoji(p)}
           </span>
-          <span className="mt-2 font-semibold text-stone-800 dark:text-stone-100">
+          <span className="mt-2 font-semibold text-slate-800 dark:text-slate-100">
             {displayName(p)}
           </span>
           {p.is_creator && (
-            <span className="mt-0.5 text-xs text-amber-600 dark:text-amber-400">
+            <span className="mt-0.5 text-xs text-violet-600 dark:text-violet-400">
               방장
             </span>
           )}
@@ -238,7 +238,7 @@ export default function RelationshipGraph({
                 cx={node.x}
                 cy={node.y}
                 r={NODE_RADIUS}
-                className="fill-white stroke-2 stroke-stone-200 dark:fill-stone-800 dark:stroke-stone-600"
+                className="fill-white stroke-2 stroke-slate-200 dark:fill-slate-800 dark:stroke-slate-600"
               />
               {isHighlightedNode && selectedTier && (
                 <circle
@@ -258,7 +258,7 @@ export default function RelationshipGraph({
                   cx={node.x}
                   cy={node.y}
                   r={NODE_RADIUS}
-                  className="fill-none stroke-amber-400 stroke-2 dark:stroke-amber-500"
+                  className="fill-none stroke-violet-400 stroke-2 dark:stroke-violet-500"
                 />
               )}
               <text
@@ -276,7 +276,7 @@ export default function RelationshipGraph({
                 textAnchor="middle"
                 fontSize="13"
                 fontWeight="600"
-                className="fill-stone-800 dark:fill-stone-100"
+                className="fill-slate-800 dark:fill-slate-100"
               >
                 {displayName(node.p).slice(0, 6)}
                 {displayName(node.p).length > 6 ? "…" : ""}
@@ -288,7 +288,7 @@ export default function RelationshipGraph({
                   textAnchor="middle"
                   fontSize="11"
                   fontWeight="500"
-                  className="fill-amber-600 dark:fill-amber-400"
+                  className="fill-violet-600 dark:fill-violet-400"
                 >
                   방장
                 </text>

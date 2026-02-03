@@ -47,28 +47,28 @@ export default function PersonForm({
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.25 }}
     >
-      <h2 className="text-xl font-semibold text-stone-800 dark:text-stone-100">
+      <h2 className="text-xl font-semibold text-slate-800 dark:text-slate-100">
         {title}
       </h2>
       <div className="space-y-4">
         <div>
-          <label className="mb-1 block text-sm font-medium text-stone-600 dark:text-stone-400">
+          <label className="mb-1 block text-sm font-medium text-slate-600 dark:text-slate-400">
             이름 (선택)
           </label>
           <input
             {...register("name")}
-            className="w-full rounded-xl border border-stone-300 bg-white px-4 py-3 text-base text-stone-800 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/20 dark:border-stone-600 dark:bg-stone-800 dark:text-stone-200"
+            className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-base text-slate-800 transition-[border-color,box-shadow] hover:border-slate-400 focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-500/20 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-200 dark:hover:border-slate-500"
             placeholder="닉네임"
             autoComplete="name"
           />
         </div>
         <div>
-          <label className="mb-1 block text-sm font-medium text-stone-600 dark:text-stone-400">
+          <label className="mb-1 block text-sm font-medium text-slate-600 dark:text-slate-400">
             MBTI
           </label>
           <select
             {...register("mbti")}
-            className="w-full rounded-xl border border-stone-300 bg-white px-4 py-3 text-base text-stone-800 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/20 dark:border-stone-600 dark:bg-stone-800 dark:text-stone-200"
+            className="w-full rounded-xl border border-slate-300 bg-white py-3 pl-4 pr-10 text-base text-slate-800 transition-[border-color,box-shadow] hover:border-slate-400 focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-500/20 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-200 dark:hover:border-slate-500"
             aria-label="MBTI 선택"
           >
             {MBTI_TYPES.map((t) => (
@@ -79,7 +79,7 @@ export default function PersonForm({
           </select>
         </div>
         <div>
-          <label className="mb-1 block text-sm font-medium text-stone-600 dark:text-stone-400">
+          <label className="mb-1 block text-sm font-medium text-slate-600 dark:text-slate-400">
             생년월일·시 (양력)
           </label>
           <div className="grid grid-cols-4 gap-2">
@@ -89,7 +89,7 @@ export default function PersonForm({
               min={1900}
               max={2100}
               placeholder="년"
-              className="rounded-xl border border-stone-300 bg-white px-3 py-3 text-center text-stone-800 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/20 dark:border-stone-600 dark:bg-stone-800 dark:text-stone-200"
+              className="rounded-xl border border-slate-300 bg-white px-3 py-3 text-center text-slate-800 transition-[border-color,box-shadow] hover:border-slate-400 focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-500/20 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-200 dark:hover:border-slate-500"
               aria-label="출생 연도"
             />
             <input
@@ -98,7 +98,7 @@ export default function PersonForm({
               min={1}
               max={12}
               placeholder="월"
-              className="rounded-xl border border-stone-300 bg-white px-3 py-3 text-center text-stone-800 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/20 dark:border-stone-600 dark:bg-stone-800 dark:text-stone-200"
+              className="rounded-xl border border-slate-300 bg-white px-3 py-3 text-center text-slate-800 transition-[border-color,box-shadow] hover:border-slate-400 focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-500/20 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-200 dark:hover:border-slate-500"
               aria-label="출생 월"
             />
             <input
@@ -107,7 +107,7 @@ export default function PersonForm({
               min={1}
               max={maxDay}
               placeholder="일"
-              className="rounded-xl border border-stone-300 bg-white px-3 py-3 text-center text-stone-800 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/20 dark:border-stone-600 dark:bg-stone-800 dark:text-stone-200"
+              className="rounded-xl border border-slate-300 bg-white px-3 py-3 text-center text-slate-800 transition-[border-color,box-shadow] hover:border-slate-400 focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-500/20 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-200 dark:hover:border-slate-500"
               aria-label="출생 일"
             />
             <input
@@ -116,7 +116,7 @@ export default function PersonForm({
               min={0}
               max={23}
               placeholder="시"
-              className="rounded-xl border border-stone-300 bg-white px-3 py-3 text-center text-stone-800 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/20 dark:border-stone-600 dark:bg-stone-800 dark:text-stone-200"
+              className="rounded-xl border border-slate-300 bg-white px-3 py-3 text-center text-slate-800 transition-[border-color,box-shadow] hover:border-slate-400 focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-500/20 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-200 dark:hover:border-slate-500"
               aria-label="출생 시"
             />
           </div>
@@ -135,7 +135,7 @@ export default function PersonForm({
       </div>
       <motion.button
         type="submit"
-        className="min-h-[48px] w-full rounded-xl bg-amber-500 px-4 py-3 text-lg font-semibold text-white shadow-lg transition hover:bg-amber-600 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 dark:focus:ring-offset-stone-900"
+        className="min-h-[48px] w-full rounded-xl bg-violet-500 px-4 py-3 text-lg font-semibold text-white shadow-md transition-[box-shadow,background-color] hover:bg-violet-600 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2 dark:focus:ring-offset-slate-900"
         whileTap={{ scale: 0.98 }}
         aria-label={submitLabel}
       >

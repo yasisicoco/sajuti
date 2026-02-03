@@ -11,11 +11,11 @@ export type RelationshipTier =
   | "폭발 주의";
 
 const TIERS: { min: number; tier: RelationshipTier; color: string }[] = [
-  { min: 90, tier: "완전 찰떡", color: "#2563eb" },
-  { min: 70, tier: "찰떡 궁합", color: "#16a34a" },
-  { min: 50, tier: "무난한 사이", color: "#ca8a04" },
-  { min: 30, tier: "가끔 삐걱", color: "#ea580c" },
-  { min: 0, tier: "폭발 주의", color: "#dc2626" },
+  { min: 90, tier: "완전 찰떡", color: "#818cf8" },
+  { min: 70, tier: "찰떡 궁합", color: "#6ee7b7" },
+  { min: 50, tier: "무난한 사이", color: "#fde047" },
+  { min: 30, tier: "가끔 삐걱", color: "#fdba74" },
+  { min: 0, tier: "폭발 주의", color: "#f9a8d4" },
 ];
 
 export function getRelationshipTier(combinedScore: number): RelationshipTier {
@@ -26,7 +26,7 @@ export function getRelationshipTier(combinedScore: number): RelationshipTier {
 }
 
 export function getTierColor(tier: RelationshipTier): string {
-  return TIERS.find((t) => t.tier === tier)?.color ?? "#6b7280";
+  return TIERS.find((t) => t.tier === tier)?.color ?? "#94a3b8";
 }
 
 export function getTierColorByScore(score: number): string {
