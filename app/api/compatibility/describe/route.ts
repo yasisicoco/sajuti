@@ -51,29 +51,55 @@ function formatSajuPillarsForPrompt(pillars: string): string {
   return `${pillars.slice(0, 2)}년 ${pillars.slice(2, 4)}월 ${pillars.slice(4, 6)}일 ${pillars.slice(6, 8)}시`;
 }
 
+type CacheRow = { content: unknown } | null;
+
+/** compatibility_cache 테이블은 Supabase 생성 타입에 없어 any로 테이블 접근 */
 async function getCached(
-  supabase: ReturnType<typeof createClient>,
+  supabase: unknown,
   cacheKey: string,
 ): Promise<{ paragraphs: string[] } | null> {
-  const { data, error } = await supabase
+  const { data, error } = await (
+    supabase as {
+      from: (t: string) => {
+        select: (c: string) => {
+          eq: (
+            a: string,
+            b: string,
+          ) => {
+            maybeSingle: () => Promise<{ data: CacheRow; error: unknown }>;
+          };
+        };
+      };
+    }
+  )
     .from("compatibility_cache")
     .select("content")
     .eq("cache_key", cacheKey)
     .maybeSingle();
-  if (error || !data?.content) return null;
-  const content = data.content as { paragraphs?: string[] };
+  const row = data as CacheRow;
+  if (error || !row?.content) return null;
+  const content = row.content as { paragraphs?: string[] };
   if (Array.isArray(content?.paragraphs))
     return { paragraphs: content.paragraphs };
   return null;
 }
 
 async function setCached(
-  supabase: ReturnType<typeof createClient>,
+  supabase: unknown,
   cacheKey: string,
   type: "mbti" | "saju",
   content: { paragraphs: string[] },
 ): Promise<void> {
-  await supabase
+  await (
+    supabase as {
+      from: (t: string) => {
+        upsert: (
+          row: Record<string, unknown>,
+          opts: { onConflict: string },
+        ) => Promise<unknown>;
+      };
+    }
+  )
     .from("compatibility_cache")
     .upsert(
       { cache_key: cacheKey, type, content },
