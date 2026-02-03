@@ -1,6 +1,6 @@
 import { createClient } from "@supabase/supabase-js";
 import { notFound } from "next/navigation";
-import { ResultView, computeResult } from "@/components/ResultView";
+import ResultView, { computeResult } from "@/components/ResultView";
 import type { InputForm } from "@/lib/schema";
 
 type Row = {

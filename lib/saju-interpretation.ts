@@ -118,8 +118,12 @@ export function getSajuInterpretationDetailed(
     sanggeuk?: number;
   },
 ): string {
-  const result = opts ?? sajuCompatibility(saju1, saju2);
-  const { score, hap, chung, sangsaeng, sanggeuk } = result;
+  const base = sajuCompatibility(saju1, saju2);
+  const score = opts?.score ?? base.score;
+  const hap = opts?.hap ?? base.hap;
+  const chung = opts?.chung ?? base.chung;
+  const sangsaeng = opts?.sangsaeng ?? base.sangsaeng;
+  const sanggeuk = opts?.sanggeuk ?? base.sanggeuk;
   const ganHapPillars = getGanHapPillars(saju1, saju2);
   const jiHapPillars = getJiHapPillars(saju1, saju2);
   const jiChungPillars = getJiChungPillars(saju1, saju2);
